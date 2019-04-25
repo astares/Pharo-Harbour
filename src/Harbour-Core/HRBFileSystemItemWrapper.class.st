@@ -49,6 +49,12 @@ HRBFileSystemItemWrapper class >> systemIcon [
 	^self isAbstract ifTrue: [ super systemIcon ] ifFalse: [ self icon ]
 ]
 
+{ #category : #accessing }
+HRBFileSystemItemWrapper >> allElements [  
+	
+	^self subdirectories join: self files
+]
+
 { #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> directories [ 
 	[ self fileReference directories ] on: Exception do: [ ^#()].
@@ -94,6 +100,11 @@ HRBFileSystemItemWrapper >> pathString [
 	path := self fileReference fullPath pathString.
 	^Smalltalk os isWindows ifTrue: [ path allButFirst copyReplaceAll: '/' with: '\' ]
 		ifFalse: [ path ]
+]
+
+{ #category : #'private - accessing' }
+HRBFileSystemItemWrapper >> size [ 
+	^''
 ]
 
 { #category : #accessing }
