@@ -31,7 +31,7 @@ HRBFolderStructurePresenter >> initializeWidgets [
 	tree
 		addColumn:
 			(CompositeTableColumn new
-				title: 'Folders' translated;
+				title: self title;
 				addColumn:
 					(ImageTableColumn new
 						width: 20;
@@ -46,4 +46,12 @@ HRBFolderStructurePresenter >> initializeWidgets [
 		roots: HRBFileSystemItemWrapper roots;
 		children: [ :aClass | aClass subdirectories ];
 		beResizable
+]
+
+{ #category : #initialization }
+HRBFolderStructurePresenter >> title [
+	^Smalltalk os isWindows 
+		ifTrue: ' Drives and Folders' 
+  		ifFalse: ' Folders' 
+	
 ]

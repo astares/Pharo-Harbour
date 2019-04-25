@@ -43,6 +43,12 @@ HRBFileSystemItemWrapper class >> roots [
 		ifFalse: [ Array with: (HRBRootDirectoryWrapper on: FileSystem root) ]
 ]
 
+{ #category : #accessing }
+HRBFileSystemItemWrapper class >> systemIcon [
+
+	^self icon
+]
+
 { #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> children [ 
 	[ self fileReference directories ] on: Exception do: [ ^#()].
