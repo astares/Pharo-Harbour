@@ -91,7 +91,7 @@ HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 		
 	^ ToolBarButton new
-		label: 'Back';
+		label: 'Forward';
 		icon: (self iconNamed: #forward);
 		help: 'Navigate to previous item';
 		action: [ self pushMessage ];
