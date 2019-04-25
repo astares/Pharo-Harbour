@@ -16,12 +16,12 @@ Class {
 
 { #category : #specs }
 HRBFileBrowserWindow class >> defaultSpec [
-	^ SpecBoxLayout newVertical 
-		 
-		 add: #pathNamePresenter withConstraints: [ :constraints | constraints height: self buttonHeight ];
+	^ SpecBoxLayout newVertical 		 
+		 add: #pathNamePresenter withConstraints: [:constraints | constraints height: self buttonHeight ];
 		 add: (SpecPanedLayout newHorizontal
+				position: 30 percent;
 				add: #folderStructurPresenter;
-				add: #folderStructurPresenter;
+				 
 				yourself);
 		yourself		
 ]

@@ -7,24 +7,44 @@ Class {
 	#instVars : [
 		'tree',
 		'text',
-		'label'
+		'label',
+		'button'
 	],
 	#category : #'Harbour-UI-Components'
 }
 
 { #category : #specs }
 HRBPathNamePresenter class >> defaultSpec [ 
-	^SpecPanedLayout newHorizontal 
-		position: 10 percent;
-		add: #label;
+	^SpecBoxLayout newHorizontal 
+	 
+		add: #label withConstraints: [ :constraints | constraints width: 40 ];
 		add: #text;
+		add: #button withConstraints: [ :constraints | constraints width: 30 ];
 		yourself
 ]
 
 { #category : #initialization }
 HRBPathNamePresenter >> initializeWidgets [
 	label := self newLabel label: 'Path:'.
-	text := self newTextInput 
+	text := self newTextInput.
+	button := self newButton.
+	button 
+		label: '...';
+		action: [ self openNativeFileBrowser ]
+]
+
+{ #category : #actions }
+HRBPathNamePresenter >> openNativeFileBrowser [
+	| path |
+	path := self pathName.
+	path isEmpty ifTrue: [ ^self inform: 'No path selected' ].
+	(path size = 2 and: [ path second = $: ]) ifTrue: [ path := path , '\' ].
+	OSPlatform current openNativeBrowserOn: path asFileReference 
+]
+
+{ #category : #initialization }
+HRBPathNamePresenter >> pathName [
+	^text text
 ]
 
 { #category : #initialization }
