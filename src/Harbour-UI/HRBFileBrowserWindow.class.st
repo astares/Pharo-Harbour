@@ -61,6 +61,14 @@ HRBFileBrowserWindow class >> taskbarIcon [
 ]
 
 { #category : #'private - building' }
+HRBFileBrowserWindow >> buildExtrasMenu [
+
+	^ self newMenu
+		addItem: [ :item | item name: 'Open Terminal'; action: [ self openTerminal ] ];	 
+		yourself
+]
+
+{ #category : #'private - building' }
 HRBFileBrowserWindow >> buildFileMenu [
 
 	^ self newMenu
@@ -70,10 +78,16 @@ HRBFileBrowserWindow >> buildFileMenu [
 
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildMenuBar [
-
 	^ self newMenuBar
-		addGroup: [ :group | group
-			addItem: [ :item | item name: 'File'; subMenu: self buildFileMenu ] ]
+		addGroup: [ :group | 
+			group addItem: [ :item | 
+					item
+						name: 'File';
+						subMenu: self buildFileMenu ].
+			group addItem: [ :item | 
+					item
+						name: 'Extras';
+						subMenu: self buildExtrasMenu ] ]
 ]
 
 { #category : #'private - building' }
@@ -154,6 +168,13 @@ HRBFileBrowserWindow >> menu: anObject [
 HRBFileBrowserWindow >> open [ 
 	<script: 'self open'>
 	self class open
+]
+
+{ #category : #actions }
+HRBFileBrowserWindow >> openTerminal [
+
+	HRBFileUtils openTerminalOn: pathNamePresenter pathName
+	
 ]
 
 { #category : #actions }

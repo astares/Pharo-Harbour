@@ -75,3 +75,22 @@ HRBIconCache class >> reset [
 	
 	IconCache := nil
 ]
+
+{ #category : #icons }
+HRBIconCache class >> terminalIcon [
+	<script: 'self terminalIcon inspect'>
+
+	^self iconNamed: #terminalIcon
+]
+
+{ #category : #'private - icons' }
+HRBIconCache class >> terminalIconContents [
+
+	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVR4XmOgGIiKimlo6+iF
+koqVlVVcgdoZGYpKKladv3z9PxxfAuFr/8+h44vX/m/bc+T/1t2H/x84evr/yvXb/gMN4Gco
+Kata5e/v/9/X1/e/t7f3f09Pz/9ubm7/nZ2d/zs4OPy3sbH5b25u/t/Q0PC/qqrqf1FR0f+M
+jIz/C0sqQAYIww2YM2fO//j4+P+xsbH/16xZQ7wBxVgMiIqK+j9t2rT/WVlZ/2tra8HiSkpK
+/yUlJf/z8/OjGpBTUAr3gpeX139TU9P/MjIy/7m4uEAKcOKsvGKYASVgA0xMTP5zc3Pj1YTT
+AAUFBaI1YhgAZKwiVfNwM0BFVS3B1z94OxDvIAWbWVgtBBrAywDOEAwMLEDMSiJmYaAGAABP
+FCjDKXmnHQAAAABJRU5ErkJggg=='
+]
