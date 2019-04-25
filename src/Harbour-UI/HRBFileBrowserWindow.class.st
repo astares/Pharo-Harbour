@@ -151,7 +151,9 @@ HRBFileBrowserWindow >> initializeWidgets [
 	folderStructurPresenter := self instantiate: HRBFolderStructurePresenter.
 	folderContentPresenter := self instantiate: HRBFolderContentPresenter.
 	
-	folderStructurPresenter whenFolderChangedDo: [:folder | pathNamePresenter pathName: folder pathString ]
+	folderStructurPresenter whenFolderChangedDo: [:folder | 
+		pathNamePresenter pathName: folder pathString.
+		folderContentPresenter folder: folder ]
 ]
 
 { #category : #initialization }

@@ -13,7 +13,7 @@ HRBRootDriveWrapper class >> icon [
 ]
 
 { #category : #'private accessing' }
-HRBRootDriveWrapper >> children [ 
+HRBRootDriveWrapper >> directories [ 
 	^(fileReference basename, '\') asFileReference directories
 ]
 

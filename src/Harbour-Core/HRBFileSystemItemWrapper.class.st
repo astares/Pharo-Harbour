@@ -12,7 +12,7 @@ Class {
 
 { #category : #accessing }
 HRBFileSystemItemWrapper class >> icon [ 
-	^self iconProvider folderIcon
+	^self iconProvider folderIcon 
 ]
 
 { #category : #accessing }
@@ -46,11 +46,11 @@ HRBFileSystemItemWrapper class >> roots [
 { #category : #accessing }
 HRBFileSystemItemWrapper class >> systemIcon [
 
-	^self icon
+	^self isAbstract ifTrue: [ super systemIcon ] ifFalse: [ self icon ]
 ]
 
 { #category : #'private - accessing' }
-HRBFileSystemItemWrapper >> children [ 
+HRBFileSystemItemWrapper >> directories [ 
 	[ self fileReference directories ] on: Exception do: [ ^#()].
 	^self fileReference directories
 ]
@@ -63,6 +63,12 @@ HRBFileSystemItemWrapper >> fileReference [
 { #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> fileReference: anObject [
 	fileReference := anObject
+]
+
+{ #category : #accessing }
+HRBFileSystemItemWrapper >> files [ 
+	
+	^fileReference files collect: [:each | HRBFileWrapper on: each ] 
 ]
 
 { #category : #accessing }
@@ -93,5 +99,5 @@ HRBFileSystemItemWrapper >> pathString [
 { #category : #accessing }
 HRBFileSystemItemWrapper >> subdirectories [ 
 	
-	^self children collect: [:each | HRBDirectoryWrapper on: each ] 
+	^self directories collect: [:each | HRBDirectoryWrapper on: each ] 
 ]
