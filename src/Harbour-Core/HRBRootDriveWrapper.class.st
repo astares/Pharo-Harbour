@@ -25,5 +25,11 @@ HRBRootDriveWrapper >> isRoot [
 { #category : #accessing }
 HRBRootDriveWrapper >> label [
 
-	^'[' ,super label, ']'
+	^self volumeName, ' (' ,super label, ')'
+]
+
+{ #category : #accessing }
+HRBRootDriveWrapper >> volumeName [
+
+	^HRBWin32Info getVolumeInfo: self fileReference basename
 ]
