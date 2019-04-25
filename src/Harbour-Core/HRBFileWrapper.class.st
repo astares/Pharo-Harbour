@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+HRBFileWrapper class >> icon [ 
+	^self iconProvider fileIcon 
+]
+
+{ #category : #accessing }
 HRBFileWrapper >> size [
 
 	^fileReference size asString
