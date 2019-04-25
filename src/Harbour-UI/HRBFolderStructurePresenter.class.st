@@ -1,3 +1,6 @@
+"
+Presenter for a folder structure
+"
 Class {
 	#name : #HRBFolderStructurePresenter,
 	#superclass : #ComposablePresenter,
@@ -36,11 +39,11 @@ HRBFolderStructurePresenter >> initializeWidgets [
 						yourself);
 				addColumn:
 					(StringTableColumn new
-						evaluated: #basename;
+						evaluated: #label;
 						yourself);
 				yourself);
 	 
-		roots: { HRBFileSystemItemWrapper root };
-		children: [ :aClass | aClass children ];
+		roots: HRBFileSystemItemWrapper roots;
+		children: [ :aClass | aClass subdirectories ];
 		beResizable
 ]

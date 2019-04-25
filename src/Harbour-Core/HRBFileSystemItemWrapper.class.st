@@ -32,12 +32,18 @@ HRBFileSystemItemWrapper class >> roots [
 		ifFalse: [ Array with: (HRBRootDirectoryWrapper on: FileSystem root) ]
 ]
 
-{ #category : #accessing }
+{ #category : #'private - accessing' }
+HRBFileSystemItemWrapper >> children [ 
+	[ self fileReference directories ] on: Exception do: [ ^#()].
+	^self fileReference directories
+]
+
+{ #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> fileReference [
 	^ fileReference
 ]
 
-{ #category : #accessing }
+{ #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> fileReference: anObject [
 	fileReference := anObject
 ]
@@ -45,4 +51,15 @@ HRBFileSystemItemWrapper >> fileReference: anObject [
 { #category : #testing }
 HRBFileSystemItemWrapper >> isRoot [ 
 	^false
+]
+
+{ #category : #accessing }
+HRBFileSystemItemWrapper >> label [ 
+	^self fileReference basename
+]
+
+{ #category : #accessing }
+HRBFileSystemItemWrapper >> subdirectories [ 
+	
+	^self children collect: [:each | HRBDirectoryWrapper on: each ] 
 ]
