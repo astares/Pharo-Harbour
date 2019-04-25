@@ -114,6 +114,17 @@ HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 ]
 
 { #category : #'private - building' }
+HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
+		
+	^ ToolBarButton new
+		label: 'Browse';
+		icon: HRBIconCache folderIcon;
+		help: 'Open file browser';
+		action: [ self openNativeFileBrowser ];
+		yourself
+]
+
+{ #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenTerminalToolBarItem [
 		
 	^ ToolBarButton new
@@ -136,7 +147,8 @@ HRBFileBrowserWindow >> buildToolBar [
 	^ self newToolBar 
 		addItem: self buildNavigateBackToolBarItem;
 		addItem: self buildNavigateForwardToolBarItem;		
-		addItem: self buildOpenTerminalToolBarItem "position: ToolBarItemPosition right";		
+		addItem: self buildOpenNativeFileBrowserToolBarItem;			
+		addItem: self buildOpenTerminalToolBarItem "position: ToolBarItemPosition right";				
 		yourself
 ]
 
@@ -184,6 +196,12 @@ HRBFileBrowserWindow >> menu: anObject [
 HRBFileBrowserWindow >> open [ 
 	<script: 'self open'>
 	self class open
+]
+
+{ #category : #actions }
+HRBFileBrowserWindow >> openNativeFileBrowser [
+
+	pathNamePresenter openNativeFileBrowser
 ]
 
 { #category : #actions }
