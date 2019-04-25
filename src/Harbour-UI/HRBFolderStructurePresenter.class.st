@@ -35,7 +35,7 @@ HRBFolderStructurePresenter >> initializeWidgets [
 				addColumn:
 					(ImageTableColumn new
 						width: 20;
-						evaluated: #systemIcon;
+						evaluated: #icon;
 						yourself);
 				addColumn:
 					(StringTableColumn new

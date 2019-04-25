@@ -7,8 +7,19 @@ Class {
 	#instVars : [
 		'fileReference'
 	],
-	#category : #'Harbour-Core-Utilities'
+	#category : #'Harbour-Core-Wrappers'
 }
+
+{ #category : #accessing }
+HRBFileSystemItemWrapper class >> icon [ 
+	^self iconProvider folderIcon
+]
+
+{ #category : #accessing }
+HRBFileSystemItemWrapper class >> iconProvider [ 
+
+	^HRBIconCache 
+]
 
 { #category : #testing }
 HRBFileSystemItemWrapper class >> isAbstract [ 
@@ -46,6 +57,12 @@ HRBFileSystemItemWrapper >> fileReference [
 { #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> fileReference: anObject [
 	fileReference := anObject
+]
+
+{ #category : #accessing }
+HRBFileSystemItemWrapper >> icon [
+
+	^self class icon
 ]
 
 { #category : #testing }

@@ -4,8 +4,13 @@ A root drive as found on Windows
 Class {
 	#name : #HRBRootDriveWrapper,
 	#superclass : #HRBFileSystemItemWrapper,
-	#category : #'Harbour-Core-Utilities'
+	#category : #'Harbour-Core-Wrappers'
 }
+
+{ #category : #accessing }
+HRBRootDriveWrapper class >> icon [ 
+	^self iconProvider driveIcon
+]
 
 { #category : #'private accessing' }
 HRBRootDriveWrapper >> children [ 
@@ -20,5 +25,5 @@ HRBRootDriveWrapper >> isRoot [
 { #category : #accessing }
 HRBRootDriveWrapper >> label [
 
-	^super label, '/'
+	^'[' ,super label, ']'
 ]
