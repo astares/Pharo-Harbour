@@ -9,7 +9,8 @@ Class {
 		'statusBar',
 		'toolBar',
 		'folderStructurPresenter',
-		'pathNamePresenter'
+		'pathNamePresenter',
+		'folderContentPresenter'
 	],
 	#category : #'Harbour-UI-Windows'
 }
@@ -21,7 +22,7 @@ HRBFileBrowserWindow class >> defaultSpec [
 		 add: (SpecPanedLayout newHorizontal
 				position: 30 percent;
 				add: #folderStructurPresenter;
-				 
+				add: #folderContentPresenter;
 				yourself);
 		yourself		
 ]
@@ -148,6 +149,7 @@ HRBFileBrowserWindow >> initialExtent [
 HRBFileBrowserWindow >> initializeWidgets [
 	pathNamePresenter := self instantiate: HRBPathNamePresenter.
 	folderStructurPresenter := self instantiate: HRBFolderStructurePresenter.
+	folderContentPresenter := self instantiate: HRBFolderContentPresenter.
 	
 	folderStructurPresenter whenFolderChangedDo: [:folder | pathNamePresenter pathName: folder pathString ]
 ]
