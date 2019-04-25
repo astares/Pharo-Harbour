@@ -27,7 +27,6 @@ HRBFolderStructurePresenter class >> open [
 { #category : #initialization }
 HRBFolderStructurePresenter >> initializeWidgets [
 	tree := self newTreeTable.
-
 	tree
 		addColumn:
 			(CompositeTableColumn new
@@ -54,4 +53,10 @@ HRBFolderStructurePresenter >> title [
 		ifTrue: ' Drives and Folders' 
   		ifFalse: ' Folders' 
 	
+]
+
+{ #category : #'api-events' }
+HRBFolderStructurePresenter >> whenFolderChangedDo: aBlock [
+	
+	tree whenSelectionChangedDo: [:sel | aBlock cull: sel selectedItem ]
 ]

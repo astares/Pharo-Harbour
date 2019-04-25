@@ -82,6 +82,15 @@ HRBFileSystemItemWrapper >> label [
 ]
 
 { #category : #accessing }
+HRBFileSystemItemWrapper >> pathString [
+ 
+	| path |
+	path := self fileReference fullPath pathString.
+	^Smalltalk os isWindows ifTrue: [ path allButFirst copyReplaceAll: '/' with: '\' ]
+		ifFalse: [ path ]
+]
+
+{ #category : #accessing }
 HRBFileSystemItemWrapper >> subdirectories [ 
 	
 	^self children collect: [:each | HRBDirectoryWrapper on: each ] 

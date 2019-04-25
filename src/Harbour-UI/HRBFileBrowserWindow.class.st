@@ -7,15 +7,28 @@ Class {
 	#instVars : [
 		'menu',
 		'statusBar',
-		'toolBar'
+		'toolBar',
+		'folderStructurPresenter',
+		'pathNamePresenter'
 	],
 	#category : #'Harbour-UI-Windows'
 }
 
 { #category : #specs }
 HRBFileBrowserWindow class >> defaultSpec [
-	^ SpecBoxLayout newVertical
+	^ SpecBoxLayout newVertical 
 		 
+		 add: #pathNamePresenter withConstraints: [ :constraints | constraints height: self buttonHeight ];
+		 add: (SpecPanedLayout newHorizontal
+				add: #folderStructurPresenter;
+				add: #folderStructurPresenter;
+				yourself);
+		yourself		
+]
+
+{ #category : #accessing }
+HRBFileBrowserWindow class >> icon [ 
+	^HRBIconCache driveIcon
 ]
 
 { #category : #showing }
@@ -23,6 +36,16 @@ HRBFileBrowserWindow class >> open [
 	<script>
 
 	self new openWithSpec
+]
+
+{ #category : #accessing }
+HRBFileBrowserWindow class >> systemIcon [ 
+	^self icon
+]
+
+{ #category : #accessing }
+HRBFileBrowserWindow class >> taskbarIcon [ 
+	^self icon
 ]
 
 { #category : #'private - building' }
@@ -85,8 +108,10 @@ HRBFileBrowserWindow >> initialExtent [
 
 { #category : #initialization }
 HRBFileBrowserWindow >> initializeWidgets [
+	pathNamePresenter := self instantiate: HRBPathNamePresenter.
+	folderStructurPresenter := self instantiate: HRBFolderStructurePresenter.
 	
-	
+	folderStructurPresenter whenFolderChangedDo: [:folder | pathNamePresenter pathName: folder pathString ]
 ]
 
 { #category : #initialization }
