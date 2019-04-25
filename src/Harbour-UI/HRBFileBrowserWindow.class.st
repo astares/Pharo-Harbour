@@ -31,6 +31,18 @@ HRBFileBrowserWindow class >> icon [
 	^HRBIconCache driveIcon
 ]
 
+{ #category : #'world menu' }
+HRBFileBrowserWindow class >> menuCommandOn: aBuilder [ 
+	<worldMenu> 
+	(aBuilder item: #'File Manager')
+		parent: #'Tools';
+		help: 'File Manager';
+		action: [ self open ]; 
+		order: 3.0; 
+		icon: self icon. 
+	
+]
+
 { #category : #showing }
 HRBFileBrowserWindow class >> open [
 	<script>

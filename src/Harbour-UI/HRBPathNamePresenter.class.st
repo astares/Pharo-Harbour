@@ -38,7 +38,7 @@ HRBPathNamePresenter >> openNativeFileBrowser [
 	| path |
 	path := self pathName.
 	path isEmpty ifTrue: [ ^self inform: 'No path selected' ].
-	(path size = 2 and: [ path second = $: ]) ifTrue: [ path := path , '\' ].
+	(HRBFileUtils representsShortWindowsDrive: path) ifTrue: [ path := path , '\' ].
 	OSPlatform current openNativeBrowserOn: path asFileReference 
 ]
 
