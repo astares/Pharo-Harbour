@@ -113,6 +113,17 @@ HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 ]
 
 { #category : #'private - building' }
+HRBFileBrowserWindow >> buildOpenTerminalToolBarItem [
+		
+	^ ToolBarButton new
+		label: 'Terminal';
+		icon: HRBIconCache terminalIcon;
+		help: 'Open terminal';
+		action: [ self openTerminal ];
+		yourself
+]
+
+{ #category : #'private - building' }
 HRBFileBrowserWindow >> buildStatusBar [
 
 	^ StatusBarPresenter new
@@ -124,6 +135,7 @@ HRBFileBrowserWindow >> buildToolBar [
 	^ self newToolBar 
 		addItem: self buildNavigateBackToolBarItem;
 		addItem: self buildNavigateForwardToolBarItem;		
+		addItem: self buildOpenTerminalToolBarItem "position: ToolBarItemPosition right";		
 		yourself
 ]
 
