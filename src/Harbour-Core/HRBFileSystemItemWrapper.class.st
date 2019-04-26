@@ -52,7 +52,9 @@ HRBFileSystemItemWrapper class >> systemIcon [
 { #category : #accessing }
 HRBFileSystemItemWrapper >> allElements [  
 	
-	^self subdirectories join: self files
+	^(OrderedCollection withAll: self subdirectories) 
+		addAll: self files; 
+		yourself
 ]
 
 { #category : #'private - accessing' }
