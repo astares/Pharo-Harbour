@@ -80,3 +80,9 @@ HRBFolderContentPresenter >> table [
 
 	^table ifNil: [ table := self newTable ]
 ]
+
+{ #category : #'api-events' }
+HRBFolderContentPresenter >> whenItemChangedDo: aBlock [
+	
+	table whenSelectionChangedDo: [:sel | aBlock cull: sel selectedItem ]
+]

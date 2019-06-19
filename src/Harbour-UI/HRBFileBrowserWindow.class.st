@@ -165,7 +165,11 @@ HRBFileBrowserWindow >> initializeWidgets [
 	
 	folderStructurPresenter whenFolderChangedDo: [:folder | 
 		pathNamePresenter pathName: folder pathString.
-		folderContentPresenter folder: folder ]
+		folderContentPresenter folder: folder ].
+
+	folderContentPresenter whenItemChangedDo: [:item | 
+		pathNamePresenter pathName: item pathString.
+	]
 ]
 
 { #category : #initialization }
