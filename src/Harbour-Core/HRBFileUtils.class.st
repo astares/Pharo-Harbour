@@ -59,7 +59,7 @@ HRBFileUtils class >> openTerminalOn: aPath [
 { #category : #'private - actions' }
 HRBFileUtils class >> openWindowsTerminalOn: aPath [
 
-	^LibC system: 'cmd.exe /K "cd /d ', aPath, '"'
+	^LibC system: 'start cmd.exe /K "cd /d ', aPath, '"'
 ]
 
 { #category : #testing }
