@@ -56,6 +56,7 @@ HRBFolderContentPresenter >> folder [
 { #category : #accessing }
 HRBFolderContentPresenter >> folder: anObject [
 	folder := anObject.
+	detail showFile: nil.
    self table items: folder allElements
 	
 ]

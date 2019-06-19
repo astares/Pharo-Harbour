@@ -31,14 +31,21 @@ HRBFileDetailPresenter class >> open [
 HRBFileDetailPresenter >> detailText [
 
 	^self newText
-		text: 'test';
+		text: self fileContents;
 		yourself
+]
+
+{ #category : #initialization }
+HRBFileDetailPresenter >> fileContents [ 
+
+	^selectedFile asFileReference binaryReadStreamDo: [:stream |
+		(ZnCharacterReadStream on: stream encoding: #null) next: 5000 ]
 ]
 
 { #category : #initialization }
 HRBFileDetailPresenter >> fileContentsPage [
 	^ NotebookPage
-		title: 'File Contents'
+		title: 'Preview ' , selectedFile label 
 		icon: HRBIconCache fileIcon
 		provider: self detailText 
 		 
@@ -55,7 +62,7 @@ HRBFileDetailPresenter >> hidePage [
 { #category : #initialization }
 HRBFileDetailPresenter >> initializeWidgets [
 	
-	notebook := self newNotebook.
+	notebook := self newNotebook
 	
 ]
 
@@ -72,11 +79,13 @@ HRBFileDetailPresenter >> selectedFile: anObject [
 { #category : #accessing }
 HRBFileDetailPresenter >> showFile: anObject [
 	self hidePage.
-	anObject isFile ifTrue: [  
-			selectedFile := anObject.		
-			page := self fileContentsPage.
-			notebook addPage: page.
-			notebook selectPage: page.
-	]
+	selectedFile := anObject.		
+	anObject isNil ifTrue: [ ^self ].		
+	anObject isFile ifFalse: [ ^self ]. 
+	
+	page := self fileContentsPage.
+	notebook addPage: page.
+	notebook selectPage: page.
+
 			
 ]

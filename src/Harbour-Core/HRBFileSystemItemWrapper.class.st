@@ -57,6 +57,12 @@ HRBFileSystemItemWrapper >> allElements [
 		yourself
 ]
 
+{ #category : #conversion }
+HRBFileSystemItemWrapper >> asFileReference [ 
+
+	^self fileReference
+]
+
 { #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> directories [ 
 	[ self fileReference directories ] on: Exception do: [ ^#()].
