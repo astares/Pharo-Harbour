@@ -86,6 +86,18 @@ HRBFileSystemItemWrapper >> icon [
 ]
 
 { #category : #testing }
+HRBFileSystemItemWrapper >> isDirectory [
+
+	^false
+]
+
+{ #category : #testing }
+HRBFileSystemItemWrapper >> isFile [
+
+	^false
+]
+
+{ #category : #testing }
 HRBFileSystemItemWrapper >> isRoot [ 
 	^false
 ]

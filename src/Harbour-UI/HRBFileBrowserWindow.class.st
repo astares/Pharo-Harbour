@@ -167,8 +167,8 @@ HRBFileBrowserWindow >> initializeWidgets [
 		pathNamePresenter pathName: folder pathString.
 		folderContentPresenter folder: folder ].
 
-	folderContentPresenter whenItemChangedDo: [:item | 
-		pathNamePresenter pathName: item pathString.
+	folderContentPresenter whenItemsChangedDo: [:items | 
+		self statusBar pushMessage: (self statusTextFor: items)
 	]
 ]
 
@@ -229,6 +229,20 @@ HRBFileBrowserWindow >> statusBar [
 { #category : #'accessing - ui' }
 HRBFileBrowserWindow >> statusBar: anObject [
 	^ statusBar := anObject
+]
+
+{ #category : #'private - accessing' }
+HRBFileBrowserWindow >> statusTextFor: aCollection [ 
+	 
+	| onlyFiles text |
+	onlyFiles := aCollection allSatisfy: [:each | each isFile].
+	text := String streamContents: [:s | 
+		s nextPutAll: aCollection size asString.
+		s nextPutAll: ' element'.
+      aCollection size > 1 ifTrue: [ s nextPut: $s ].	"handle plural"
+		s nextPutAll: ' selected'		
+	].
+	^text
 ]
 
 { #category : #defaults }

@@ -6,3 +6,9 @@ Class {
 	#superclass : #HRBFileSystemItemWrapper,
 	#category : #'Harbour-Core-Wrappers'
 }
+
+{ #category : #testing }
+HRBDirectoryWrapper >> isDirectory [
+
+	^true
+]

@@ -56,7 +56,7 @@ HRBFolderContentPresenter >> folder: anObject [
 HRBFolderContentPresenter >> initializeWidgets [
 	
 	self table	
-		 
+		beMultipleSelection; 
 		addColumn: (CompositeTableColumn new
 				title: 'File Name';
 				addColumn:
@@ -82,7 +82,7 @@ HRBFolderContentPresenter >> table [
 ]
 
 { #category : #'api-events' }
-HRBFolderContentPresenter >> whenItemChangedDo: aBlock [
+HRBFolderContentPresenter >> whenItemsChangedDo: aBlock [
 	
-	table whenSelectionChangedDo: [:sel | aBlock cull: sel selectedItem ]
+	table whenSelectionChangedDo: [:sel | aBlock cull: sel selectedItems ] 
 ]
