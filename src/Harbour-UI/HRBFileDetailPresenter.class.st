@@ -1,9 +1,13 @@
+"
+Present file details
+"
 Class {
 	#name : #HRBFileDetailPresenter,
 	#superclass : #ComposablePresenter,
 	#instVars : [
 		'notebook',
-		'selectedFile'
+		'selectedFile',
+		'page'
 	],
 	#category : #'Harbour-UI-Components'
 }
@@ -26,8 +30,26 @@ HRBFileDetailPresenter class >> open [
 { #category : #initialization }
 HRBFileDetailPresenter >> detailText [
 
-	selectedFile ifNil: [ ^self newEmpty ].
-	
+	^self newText
+		text: 'test';
+		yourself
+]
+
+{ #category : #initialization }
+HRBFileDetailPresenter >> fileContentsPage [
+	^ NotebookPage
+		title: 'File Contents'
+		icon: HRBIconCache fileIcon
+		provider: self detailText 
+		 
+]
+
+{ #category : #accessing }
+HRBFileDetailPresenter >> hidePage [
+
+	page ifNotNil: [ 
+			notebook removePage: page.
+			page := nil ]
 ]
 
 { #category : #initialization }
@@ -35,20 +57,26 @@ HRBFileDetailPresenter >> initializeWidgets [
 	
 	notebook := self newNotebook.
 	
-	notebook
-		addPage: self objectInspectorPage
 ]
 
-{ #category : #initialization }
-HRBFileDetailPresenter >> newEmpty [ 
-	^ (self instantiate: LabelPresenter) label: '(No file selected)'
+{ #category : #accessing }
+HRBFileDetailPresenter >> selectedFile [
+	^ selectedFile
 ]
 
-{ #category : #initialization }
-HRBFileDetailPresenter >> objectInspectorPage [
-	^ NotebookPage
-		title: 'File Contents'
-		icon: (self iconNamed: #nautilusIcon)
-		provider: [ self detailText ]
-		 
+{ #category : #accessing }
+HRBFileDetailPresenter >> selectedFile: anObject [
+	selectedFile := anObject
+]
+
+{ #category : #accessing }
+HRBFileDetailPresenter >> showFile: anObject [
+	self hidePage.
+	anObject isFile ifTrue: [  
+			selectedFile := anObject.		
+			page := self fileContentsPage.
+			notebook addPage: page.
+			notebook selectPage: page.
+	]
+			
 ]

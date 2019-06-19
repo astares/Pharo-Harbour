@@ -92,5 +92,10 @@ HRBFolderContentPresenter >> table [
 { #category : #'api-events' }
 HRBFolderContentPresenter >> whenItemsChangedDo: aBlock [
 	
-	table whenSelectionChangedDo: [:sel | aBlock cull: sel selectedItems ] 
+	table whenSelectionChangedDo: [:sel | 
+		|items|
+		items := sel selectedItems.
+		aBlock cull: items.
+			detail showFile: (items ifEmpty: [ nil ] ifNotEmpty: [ items last ])
+	] 
 ]
