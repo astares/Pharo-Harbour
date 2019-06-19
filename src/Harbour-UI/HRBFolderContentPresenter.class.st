@@ -6,7 +6,8 @@ Class {
 	#superclass : #ComposablePresenter,
 	#instVars : [
 		'table',
-		'folder'
+		'folder',
+		'detail'
 	],
 	#category : #'Harbour-UI-Components'
 }
@@ -17,6 +18,7 @@ HRBFolderContentPresenter class >> defaultSpec [
 	^ SpecPanedLayout newVertical
 		position: 30 percent;
 		add: #table;
+		add: #detail;
 		yourself
 ]
 
@@ -41,6 +43,12 @@ HRBFolderContentPresenter class >> openOn: aFileReference [
 ]
 
 { #category : #accessing }
+HRBFolderContentPresenter >> detail [
+
+	^detail ifNil: [ detail := (self instantiate: HRBFileDetailPresenter) ]
+]
+
+{ #category : #accessing }
 HRBFolderContentPresenter >> folder [
 	^ folder
 ]
@@ -54,7 +62,7 @@ HRBFolderContentPresenter >> folder: anObject [
 
 { #category : #initialization }
 HRBFolderContentPresenter >> initializeWidgets [
-	
+	self detail.
 	self table	
 		beMultipleSelection; 
 		addColumn: (CompositeTableColumn new
