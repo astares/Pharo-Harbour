@@ -73,7 +73,7 @@ HRBFileBrowserWindow >> buildExtrasMenu [
 HRBFileBrowserWindow >> buildFileMenu [
 
 	^ self newMenu
-		addItem: [ :item | item name: 'Set status text'; action: [ self pushMessage ] ];	 
+		addItem: [ :item | item name: 'Browse'; action: [ self openNativeFileBrowser ] ];	 
 		yourself
 ]
 
