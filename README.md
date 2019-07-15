@@ -13,5 +13,8 @@ Metacello new
 ```
 ## Screnshot
 
+### Windows
 ![alt text](doc/screenshot-win.png "Screenshot")
+
+### Ubuntu
 ![alt text](doc/screenshot-ubuntu.png "Screenshot")
