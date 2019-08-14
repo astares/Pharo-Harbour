@@ -3,7 +3,7 @@ Main UI window for the file browser
 "
 Class {
 	#name : #HRBFileBrowserWindow,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'menu',
 		'statusBar',
@@ -17,9 +17,9 @@ Class {
 
 { #category : #specs }
 HRBFileBrowserWindow class >> defaultSpec [
-	^ SpecBoxLayout newVertical 		 
+	^ SpBoxLayout newVertical 		 
 		 add: #pathNamePresenter withConstraints: [:constraints | constraints height: self buttonHeight ];
-		 add: (SpecPanedLayout newHorizontal
+		 add: (SpPanedLayout newHorizontal
 				position: 30 percent;
 				add: #folderStructurPresenter;
 				add: #folderContentPresenter;
@@ -94,7 +94,7 @@ HRBFileBrowserWindow >> buildMenuBar [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 		
-	^ ToolBarButton new
+	^ SpToolBarButton new
 		label: 'Back';
 		icon: (self iconNamed: #back);
 		help: 'Navigate to previous';
@@ -105,7 +105,7 @@ HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 		
-	^ ToolBarButton new
+	^ SpToolBarButton new
 		label: 'Forward';
 		icon: (self iconNamed: #forward);
 		help: 'Navigate to previous item';
@@ -116,7 +116,7 @@ HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
 		
-	^ ToolBarButton new
+	^ SpToolBarButton new
 		label: 'Browse';
 		icon: HRBIconCache folderIcon;
 		help: 'Open file browser';
@@ -127,7 +127,7 @@ HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenTerminalToolBarItem [
 		
-	^ ToolBarButton new
+	^ SpToolBarButton new
 		label: 'Terminal';
 		icon: HRBIconCache terminalIcon;
 		help: 'Open terminal';
@@ -138,7 +138,7 @@ HRBFileBrowserWindow >> buildOpenTerminalToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildStatusBar [
 
-	^ StatusBarPresenter new
+	^ SpStatusBarPresenter new
 ]
 
 { #category : #'private - building' }

@@ -3,7 +3,7 @@ Presenter for path name
 "
 Class {
 	#name : #HRBPathNamePresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'tree',
 		'text',
@@ -15,7 +15,7 @@ Class {
 
 { #category : #specs }
 HRBPathNamePresenter class >> defaultSpec [ 
-	^SpecBoxLayout newHorizontal 	
+	^ SpBoxLayout newHorizontal 	
 		add: #label withConstraints: [ :constraints | constraints width: 40 ];
 		add: #text;		
 		yourself

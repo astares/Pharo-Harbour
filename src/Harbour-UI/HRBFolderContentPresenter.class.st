@@ -3,7 +3,7 @@ Show the content of a folder as list
 "
 Class {
 	#name : #HRBFolderContentPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'table',
 		'folder',
@@ -15,7 +15,7 @@ Class {
 { #category : #specs }
 HRBFolderContentPresenter class >> defaultSpec [
 
-	^ SpecPanedLayout newVertical
+	^ SpPanedLayout newVertical
 		position: 30 percent;
 		add: #table;
 		add: #detail;
@@ -66,22 +66,19 @@ HRBFolderContentPresenter >> initializeWidgets [
 	self detail.
 	self table	
 		beMultipleSelection; 
-		addColumn: (CompositeTableColumn new
+		addColumn: (SpCompositeTableColumn new
 				title: 'File Name';
 				addColumn:
-					(ImageTableColumn new
+					(SpImageTableColumn new
 						width: 20;
 						evaluated: #icon;
 						yourself);
 				addColumn:
-					(StringTableColumn new
+					(SpStringTableColumn new
 						evaluated: [:each | ' ',each label];
 						yourself);
-				yourself);
-		
-		
-		
-		addColumn: (StringTableColumn title: 'Size' evaluated: #size)
+				yourself);		
+		addColumn: (SpStringTableColumn title: 'Size' evaluated: #size)
 ]
 
 { #category : #accessing }

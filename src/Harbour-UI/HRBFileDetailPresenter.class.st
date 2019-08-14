@@ -3,7 +3,7 @@ Present file details
 "
 Class {
 	#name : #HRBFileDetailPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'notebook',
 		'selectedFile',
@@ -15,7 +15,7 @@ Class {
 { #category : #specs }
 HRBFileDetailPresenter class >> defaultSpec [
 
-	^ SpecBoxLayout newHorizontal	 
+	^ SpBoxLayout newHorizontal	 
 		add: #notebook;
 		yourself
 ]

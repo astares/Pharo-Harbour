@@ -3,7 +3,7 @@ Presenter for a folder structure
 "
 Class {
 	#name : #HRBFolderStructurePresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'tree'
 	],
@@ -13,7 +13,7 @@ Class {
 { #category : #specs }
 HRBFolderStructurePresenter class >> defaultSpec [
 
-	^ SpecBoxLayout newVertical
+	^ SpBoxLayout newVertical
 		add: #tree;
 		yourself
 ]
@@ -29,15 +29,15 @@ HRBFolderStructurePresenter >> initializeWidgets [
 	tree := self newTreeTable.
 	tree
 		addColumn:
-			(CompositeTableColumn new
+			(SpCompositeTableColumn new
 				title: self title;
 				addColumn:
-					(ImageTableColumn new
+					(SpImageTableColumn new
 						width: 20;
 						evaluated: #icon;
 						yourself);
 				addColumn:
-					(StringTableColumn new
+					(SpStringTableColumn new
 						evaluated: #label;
 						yourself);
 				yourself);
