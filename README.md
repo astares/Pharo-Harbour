@@ -11,6 +11,29 @@ Metacello new
 	baseline: 'Harbour';
 	load
 ```
+
+Note: only works in Pharo 8 and you need to patch 
+
+```
+recalculateVerticalScrollBar
+	| interval delta pageDelta visibleRows numberOfRows |
+	
+	self hasDataSource ifFalse: [ ^ self ].
+
+	self recalculateVerticalScrollBarVisibilityIfHidden: [ ^ self ].
+	 
+	visibleRows := self container calculateExactVisibleRows.	
+	numberOfRows := self dataSource numberOfRows.
+	numberOfRows = 0 ifTrue: [ ^self ].
+	interval := (visibleRows / numberOfRows) asFloat.
+	delta := 1/numberOfRows.
+	pageDelta := ((visibleRows-1) floor)*delta.
+	self verticalScrollBar 
+		scrollDelta: delta pageDelta: pageDelta;
+		interval: interval
+```
+because there is a ZeroDivide in FTTableMorph. Will provide a fix in base Pharo
+
 ## Screnshot
 
 ### Windows
