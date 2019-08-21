@@ -44,7 +44,7 @@ HRBFileDetailPresenter >> fileContents [
 
 { #category : #initialization }
 HRBFileDetailPresenter >> fileContentsPage [
-	^ NotebookPage
+	^ SpNotebookPage
 		title: 'Preview ' , selectedFile label 
 		icon: HRBIconCache fileIcon
 		provider: self detailText 
