@@ -82,7 +82,9 @@ HRBFileSystemItemWrapper >> fileReference: anObject [
 { #category : #accessing }
 HRBFileSystemItemWrapper >> files [ 
 	
-	^fileReference files collect: [:each | HRBFileWrapper on: each ] 
+	^[fileReference files collect: [:each | HRBFileWrapper on: each ] ]
+		on: FileException 
+		do: [ #() ]
 ]
 
 { #category : #accessing }
