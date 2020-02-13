@@ -12,7 +12,7 @@ Metacello new
 	load
 ```
 
-Note: only works in Pharo 8  
+Note: only works in Pharo 8 and later 
 
 ## Screnshot
 
