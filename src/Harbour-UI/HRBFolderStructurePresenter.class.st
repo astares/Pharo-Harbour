@@ -24,6 +24,20 @@ HRBFolderStructurePresenter class >> open [
 	self new openWithSpec 
 ]
 
+{ #category : #actions }
+HRBFolderStructurePresenter >> browseFolder [
+	 tree selectedItem browseFolder 
+]
+
+{ #category : #'menu handling' }
+HRBFolderStructurePresenter >> folderContextMenu [
+
+	^(SpMenuPresenter new
+		addGroup: [ :group | group
+			addItem: [ :item | item name: 'Open in native browser';  action: [ self browseFolder ]]
+		])
+]
+
 { #category : #initialization }
 HRBFolderStructurePresenter >> initializeWidgets [
 	tree := self newTreeTable.
@@ -44,7 +58,8 @@ HRBFolderStructurePresenter >> initializeWidgets [
 	 
 		roots: HRBFileSystemItemWrapper roots;
 		children: [ :aClass | aClass subdirectories ];
-		beResizable
+		beResizable.
+	tree contextMenu: self folderContextMenu		
 ]
 
 { #category : #initialization }

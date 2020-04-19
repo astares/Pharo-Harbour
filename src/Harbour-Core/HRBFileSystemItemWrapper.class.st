@@ -63,6 +63,11 @@ HRBFileSystemItemWrapper >> asFileReference [
 	^self fileReference
 ]
 
+{ #category : #actions }
+HRBFileSystemItemWrapper >> browseFolder [
+	fileReference openInOSFileBrowser 
+]
+
 { #category : #'private - accessing' }
 HRBFileSystemItemWrapper >> directories [ 
 	[ self fileReference directories ] on: Exception do: [ ^#()].
