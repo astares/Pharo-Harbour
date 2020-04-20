@@ -60,7 +60,7 @@ HRBFileDetailPresenter >> hidePage [
 ]
 
 { #category : #initialization }
-HRBFileDetailPresenter >> initializeWidgets [
+HRBFileDetailPresenter >> initializePresenters [
 	
 	notebook := self newNotebook
 	
