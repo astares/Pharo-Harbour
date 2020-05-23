@@ -94,7 +94,7 @@ HRBFileBrowserWindow >> buildMenuBar [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'Back';
 		icon: (self iconNamed: #back);
 		help: 'Navigate to previous';
@@ -105,7 +105,7 @@ HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'Forward';
 		icon: (self iconNamed: #forward);
 		help: 'Navigate to previous item';
@@ -116,7 +116,7 @@ HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'Browse';
 		icon: HRBIconCache folderIcon;
 		help: 'Open file browser';
@@ -127,7 +127,7 @@ HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenTerminalToolBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'Terminal';
 		icon: HRBIconCache terminalIcon;
 		help: 'Open terminal';
