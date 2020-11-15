@@ -94,7 +94,7 @@ HRBFileBrowserWindow >> buildMenuBar [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'Back';
 		icon: (self iconNamed: #back);
 		help: 'Navigate to previous';
@@ -105,7 +105,7 @@ HRBFileBrowserWindow >> buildNavigateBackToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'Forward';
 		icon: (self iconNamed: #forward);
 		help: 'Navigate to previous item';
@@ -116,7 +116,7 @@ HRBFileBrowserWindow >> buildNavigateForwardToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'Browse';
 		icon: HRBIconCache folderIcon;
 		help: 'Open file browser';
@@ -127,7 +127,7 @@ HRBFileBrowserWindow >> buildOpenNativeFileBrowserToolBarItem [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildOpenTerminalToolBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'Terminal';
 		icon: HRBIconCache terminalIcon;
 		help: 'Open terminal';
@@ -144,7 +144,7 @@ HRBFileBrowserWindow >> buildStatusBar [
 { #category : #'private - building' }
 HRBFileBrowserWindow >> buildToolBar [
 	
-	^ self newToolBar 
+	^ self newToolbar 
 		addItem: self buildNavigateBackToolBarItem;
 		addItem: self buildNavigateForwardToolBarItem;		
 		addItem: self buildOpenNativeFileBrowserToolBarItem;			
@@ -180,7 +180,7 @@ HRBFileBrowserWindow >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter
 		menu: (menu := self buildMenuBar);
-		toolBar: (toolBar := self buildToolBar);
+		toolbar: (toolBar := self buildToolBar);
 		statusBar: (statusBar := self buildStatusBar).
 
 	self statusBar pushMessage: 'Ready'	
