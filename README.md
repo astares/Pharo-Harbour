@@ -1,6 +1,6 @@
 # Pharo-Harbour
 
-A simple file browser experiment for Pharo written by T. Bergmann (Astares) in 2019. Meanwhile this is now part of standard Pharo image.
+A simple file browser implementation for Pharo written by T. Bergmann (Astares) in 2019. Meanwhile this is now part of standard Pharo image.
 
 # Quick Start
 ## Installation
